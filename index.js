@@ -17,18 +17,14 @@ const { authenticateToken } = require("./utilities");
 
 app.use(express.json());
 
-app.use(express.static('dist'));
 
 const allowedOrigins = [process.env.FRONTEND_URL];
 
-app.use(
-  cors({
-    origin:allowedOrigins || "*",
-    credentials: true,
-    optionsSuccessStatus: 200, 
-  })
-);
+const corsOptions = {
+  origin: allowedOrigins,
+};
 
+app.use(cors(corsOptions));
 
 
 
